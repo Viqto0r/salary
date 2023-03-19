@@ -4,10 +4,10 @@
 /node_modules
 /.pnp
 .pnp.js
+/src/features/counter
 
 # testing
 /coverage
-src/features/counter
 
 # production
 /build
