@@ -7,7 +7,7 @@
 
 # testing
 /coverage
-/features/counter
+src/features/counter
 
 # production
 /build
