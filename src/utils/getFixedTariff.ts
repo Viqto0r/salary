@@ -1,5 +1,5 @@
 const getFixedTariff = (value: string) => {
-  return value ? value.replace(/0+(?=.)/, '') : ''
+  return value.replace(/^0+/, '0')
 }
 
 export default getFixedTariff

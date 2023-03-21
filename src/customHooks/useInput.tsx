@@ -1,6 +1,7 @@
 import { ActionCreatorWithPayload } from '@reduxjs/toolkit'
 import { useAppDispatch, useAppSelector } from '../app/hooks'
 import { RootState } from '../app/store'
+import getFixedTariff from '../utils/getFixedTariff'
 
 type ActionNameType = 'input/setTariff' | 'input/setHarmfulness'
 type ChangeHandlerType = ActionCreatorWithPayload<
@@ -16,7 +17,7 @@ const useInput = (
   const value = useAppSelector(selector)
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch(changeHandler({ value: e.target.value }))
+    dispatch(changeHandler({ value: getFixedTariff(e.target.value) }))
   }
 
   return { value, onChange }
