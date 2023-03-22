@@ -1,4 +1,5 @@
 import { FC, memo } from 'react'
+import { useAppSelector } from '../../app/hooks'
 import useCheckbox from '../../customHooks/useCheckbox'
 import useInput from '../../customHooks/useInput'
 import {
@@ -14,34 +15,45 @@ import {
 import styles from './Calculator.module.scss'
 
 const Calculator: FC = () => {
+  const isHarmfulness = useAppSelector(isHarmfulnessSelector)
   return (
     <div className={styles.container}>
-      <input
-        className={styles.tariffInput}
-        type='number'
-        {...useInput(tariffSelector, setTariff)}
-      />
-      <label>
+      <div className={styles.inputContainer}>
         <input
-          type='checkbox'
-          {...useCheckbox(isHarmfulnessSelector, toggleHarmfulness)}
-        />
-        Вредность
-      </label>
-      <label>
-        <input
+          className={styles.tariffInput}
           type='number'
-          {...useInput(harmfulnessPercentSelector, setHarmfulness)}
+          {...useInput(tariffSelector, setTariff)}
         />
-        %
-      </label>
-      <label>
-        <input
-          type='checkbox'
-          {...useCheckbox(isNightShiftsSelector, toggleNightShifts)}
-        />
-        Ночные смены
-      </label>
+      </div>
+      <div className={styles.optionsContainer}>
+        <div className={styles.harmfulnessContainer}>
+          <label>
+            <input
+              type='checkbox'
+              {...useCheckbox(isHarmfulnessSelector, toggleHarmfulness)}
+            />
+            Вредность &nbsp;
+          </label>
+          <label style={{ display: isHarmfulness ? 'block' : 'none' }}>
+            <input
+              type='number'
+              {...useInput(harmfulnessPercentSelector, setHarmfulness)}
+            />
+            &nbsp;%
+          </label>
+        </div>
+
+        <label>
+          <input
+            type='checkbox'
+            {...useCheckbox(isNightShiftsSelector, toggleNightShifts)}
+          />
+          Ночные смены
+        </label>
+      </div>
+      <div className={styles.btnContainer}>
+        <button>Рассчитать</button>
+      </div>
     </div>
   )
 }

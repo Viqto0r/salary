@@ -1,4 +1,9 @@
 .container {
-  background: #112d49;
   height: 100%;
+  margin: 0 auto;
+  max-width: 1240px;
+  display: flex;
+  justify-content: center;
+
+  padding: 15rem 20px 0;
 }
