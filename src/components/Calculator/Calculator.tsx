@@ -18,11 +18,13 @@ const Calculator: FC = () => {
   const isHarmfulness = useAppSelector(isHarmfulnessSelector)
   return (
     <div className={styles.container}>
+      <h1 className={styles.title}>Рассчёт зарплаты</h1>
       <div className={styles.inputContainer}>
         <input
           className={styles.tariffInput}
           type='number'
           {...useInput(tariffSelector, setTariff)}
+          placeholder='Введите тарифную ставку'
         />
       </div>
       <div className={styles.optionsContainer}>
