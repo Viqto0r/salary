@@ -1,7 +1,7 @@
 import { RootState } from '../../app/store'
 import { createSlice as calculatorSlice, PayloadAction } from '@reduxjs/toolkit'
 
-export interface IInintialState {
+interface IInintialState {
   tariff: string
   isHarmfulness: boolean
   harmfulnessPercent: string
@@ -44,5 +44,10 @@ export const isNightShiftsSelector = (state: RootState) =>
 export const isHarmfulnessSelector = (state: RootState) =>
   state.calculator.isHarmfulness
 
-export const { setTariff, setHarmfulness,toggleHarmfulness,toggleNightShifts } = inputSlice.actions
+export const {
+  setTariff,
+  setHarmfulness,
+  toggleHarmfulness,
+  toggleNightShifts,
+} = inputSlice.actions
 export default inputSlice.reducer
