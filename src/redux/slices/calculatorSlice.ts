@@ -26,6 +26,11 @@ const inputSlice = calculatorSlice({
       state.harmfulnessPercent = action.payload.value
     },
     toggleHarmfulness(state) {
+      if (state.isHarmfulness) {
+        state.harmfulnessPercent = '0'
+      } else {
+        state.harmfulnessPercent = '4'
+      }
       state.isHarmfulness = !state.isHarmfulness
     },
     toggleNightShifts(state) {
