@@ -4,5 +4,35 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: red;
+  padding: 10px;
+}
+
+.output {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background: #cccccc1d;
+  border-radius: 2rem;
+}
+
+.closeBtn {
+  &::before,
+  &::after {
+    display: block;
+    width: 3rem;
+    height: 0.2rem;
+
+    position: absolute;
+    top: 2.5rem;
+    right: 1rem;
+
+    background: black;
+    content: '';
+  }
+  &::before {
+    transform: rotate(-45deg);
+  }
+  &::after {
+    transform: rotate(45deg);
+  }
 }
