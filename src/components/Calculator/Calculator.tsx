@@ -1,29 +1,35 @@
 import { FC, memo } from 'react'
-import { useAppSelector } from '../../app/hooks'
-import useCheckbox from '../../customHooks/useCheckbox'
-import useInput from '../../customHooks/useInput'
-import {
-  harmfulnessPercentSelector,
-  isHarmfulnessSelector,
-  isNightShiftsSelector,
-  setHarmfulness,
-  setTariff,
-  tariffSelector,
-  toggleHarmfulness,
-  toggleNightShifts,
-} from '../../redux/slices/calculatorSlice'
+import { useAppDispatch, useAppSelector } from '../../app/hooks'
+import { outputSelector, setSalary } from '../../redux/slices/outputSlice'
+import { calculateTotalSalary } from '../../utils/calculatorUtils'
 import styles from './Calculator.module.scss'
 import Options from './Options/Options'
 import TariffInput from './TariffInput/TariffInput'
 
 const Calculator: FC = () => {
+  const { harmfulnessPercent, tariff, isNightShifts, bonus } =
+    useAppSelector(outputSelector)
+  const dispatch = useAppDispatch()
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Рассчёт зарплаты</h1>
       <TariffInput />
       <Options />
       <div className={styles.btnContainer}>
-        <button>Рассчитать</button>
+        <button
+          onClick={() =>
+            calculateTotalSalary(
+              +tariff,
+              +harmfulnessPercent,
+              isNightShifts,
+              bonus,
+              setSalary,
+              dispatch
+            )
+          }
+        >
+          Рассчитать
+        </button>
       </div>
     </div>
   )

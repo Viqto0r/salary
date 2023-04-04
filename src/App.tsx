@@ -6,7 +6,7 @@ function App() {
   return (
     <div className={styles.container}>
       <Calculator />
-      <Output />
+      {/*<Output />*/}
     </div>
   )
 }
