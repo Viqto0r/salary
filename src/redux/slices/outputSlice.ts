@@ -33,10 +33,12 @@ export interface ISalaryChunk {
 interface IInitialState {
   salary: ISalaryChunk[]
   bonus: number
+  isOpened: boolean
 }
 const initialState: IInitialState = {
   salary: [],
   bonus: 20,
+  isOpened: false,
 }
 
 const outputSlice = createSlice({
@@ -45,6 +47,9 @@ const outputSlice = createSlice({
   reducers: {
     setSalary(state, action: PayloadAction<{ salary: ISalaryChunk[] }>) {
       state.salary = action.payload.salary
+    },
+    toggleOppened(state) {
+      state.isOpened = !state.isOpened
     },
   },
 })
@@ -55,5 +60,9 @@ export const outputSelector = (state: RootState) => ({
   isNightShifts: state.calculator.isNightShifts,
   bonus: state.output.bonus,
 })
+
+export const isOpenedSelector = (state: RootState) => ({
+  isOpened: state.output.isOpened,
+})
 export default outputSlice.reducer
-export const { setSalary } = outputSlice.actions
+export const { setSalary, toggleOppened } = outputSlice.actions

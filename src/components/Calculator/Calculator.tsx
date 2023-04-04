@@ -1,6 +1,10 @@
 import { FC, memo } from 'react'
 import { useAppDispatch, useAppSelector } from '../../app/hooks'
-import { outputSelector, setSalary } from '../../redux/slices/outputSlice'
+import {
+  outputSelector,
+  setSalary,
+  toggleOppened,
+} from '../../redux/slices/outputSlice'
 import { calculateTotalSalary } from '../../utils/calculatorUtils'
 import styles from './Calculator.module.scss'
 import Options from './Options/Options'
@@ -17,7 +21,7 @@ const Calculator: FC = () => {
       <Options />
       <div className={styles.btnContainer}>
         <button
-          onClick={() =>
+          onClick={() => {
             calculateTotalSalary(
               +tariff,
               +harmfulnessPercent,
@@ -26,7 +30,8 @@ const Calculator: FC = () => {
               setSalary,
               dispatch
             )
-          }
+            dispatch(toggleOppened())
+          }}
         >
           Рассчитать
         </button>
