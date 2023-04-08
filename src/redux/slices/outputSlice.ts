@@ -1,6 +1,6 @@
 import { RootState } from './../../app/store'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-enum Shifts {
+export enum Shifts {
   d8n7 = '8 дней, 7 ночей',
   d7n8 = '7 дней, 8 ночей',
   d8n8 = '8 дней, 8 ночей',
@@ -9,16 +9,6 @@ enum Shifts {
   d16 = '16 дней',
   d14 = '14 дней',
 }
-
-const shifts = [
-  Shifts.d8n7,
-  Shifts.d7n8,
-  Shifts.d8n8,
-  Shifts.d7n7,
-  Shifts.d15,
-  Shifts.d16,
-  Shifts.d14,
-]
 
 export interface ISalaryChunk {
   salary: number

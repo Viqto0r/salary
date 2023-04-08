@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 2rem;
+  margin: 1.5rem;
+  p {
+    margin-bottom: 0.5rem;
+  }
+  .chunkName {
+    font-weight: bold;
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+.dirty {
+  font-style: italic;
+}
+.total {
+  font-weight: bolder;
+  display: inline-block;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 2px;
+}

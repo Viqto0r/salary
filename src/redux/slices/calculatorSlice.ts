@@ -1,4 +1,4 @@
-import { RootState } from '../../app/store'
+import { RootState } from './../../app/store'
 import { createSlice as calculatorSlice, PayloadAction } from '@reduxjs/toolkit'
 
 interface IInintialState {
@@ -48,6 +48,8 @@ export const isNightShiftsSelector = (state: RootState) =>
 
 export const isHarmfulnessSelector = (state: RootState) =>
   state.calculator.isHarmfulness
+
+export const salaryChunkSelector = (state: RootState) => state.output.salary
 
 export const {
   setTariff,

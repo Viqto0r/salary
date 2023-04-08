@@ -1,10 +1,28 @@
 import { FC, memo } from 'react'
 import styles from './Output.module.scss'
-import { useAppDispatch } from '../../app/hooks'
-import { toggleOppened } from '../../redux/slices/outputSlice'
+import { useAppDispatch, useAppSelector } from '../../app/hooks'
+import { Shifts, toggleOppened } from '../../redux/slices/outputSlice'
+import {
+  isNightShiftsSelector,
+  salaryChunkSelector,
+} from '../../redux/slices/calculatorSlice'
+import SalaryChunk from './SalaryChunk/SalaryChunk'
+
+const shifts = [
+  Shifts.d8n7,
+  Shifts.d7n8,
+  Shifts.d8n8,
+  Shifts.d7n7,
+  Shifts.d15,
+  Shifts.d16,
+  Shifts.d14,
+]
 
 const Output: FC = () => {
   const dispatch = useAppDispatch()
+  const salary = useAppSelector(salaryChunkSelector)
+  const isNightShifts = useAppSelector(isNightShiftsSelector)
+
   return (
     <div className={styles.container}>
       <div className={styles.output}>
@@ -14,6 +32,15 @@ const Output: FC = () => {
             dispatch(toggleOppened())
           }}
         ></div>
+        <div className={styles.chunkList}>
+          {salary.map((salaryChunk, idx) => (
+            <SalaryChunk
+              key={idx}
+              {...salaryChunk}
+              chunkName={!isNightShifts ? shifts.slice(4)[idx] : shifts[idx]}
+            />
+          ))}
+        </div>
       </div>
     </div>
   )
