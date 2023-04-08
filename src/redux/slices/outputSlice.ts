@@ -20,6 +20,7 @@ export interface ISalaryChunk {
   bonus: number
 }
 
+//type BonusType = 0 | 10 | 20 | 30
 interface IInitialState {
   salary: ISalaryChunk[]
   bonus: number
@@ -41,6 +42,9 @@ const outputSlice = createSlice({
     toggleOppened(state) {
       state.isOpened = !state.isOpened
     },
+    setBonus(state, action: PayloadAction<{ bonus: number }>) {
+      state.bonus = action.payload.bonus
+    },
   },
 })
 
@@ -54,5 +58,6 @@ export const outputSelector = (state: RootState) => ({
 export const isOpenedSelector = (state: RootState) => ({
   isOpened: state.output.isOpened,
 })
+
 export default outputSlice.reducer
-export const { setSalary, toggleOppened } = outputSlice.actions
+export const { setSalary, toggleOppened, setBonus } = outputSlice.actions

@@ -120,6 +120,23 @@ export const calculateTotalSalary = (
   }
 }
 
+export const recalcBonus = (
+  salary: ISalaryChunk[],
+  bonus: number,
+  setSalary: setSalary,
+  dispatch: Dispatch
+) => {
+  const newSalary = salary.map((chunk) => {
+    return calculateChunckSalary(
+      chunk.salary,
+      chunk.night,
+      chunk.harmfulness,
+      bonus
+    )
+  })
+  dispatch(setSalary({ salary: newSalary }))
+}
+
 type Dispatch = (setSalary: any) => typeof useDispatch<AppDispatch> // изменит Any
 
 type setSalary = (payload: { salary: ISalaryChunk[] }) => {

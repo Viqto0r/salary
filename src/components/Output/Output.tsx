@@ -7,6 +7,7 @@ import {
   salaryChunkSelector,
 } from '../../redux/slices/calculatorSlice'
 import SalaryChunk from './SalaryChunk/SalaryChunk'
+import BonusPercentToggler from './BonusPercentToggler/BonusPercentToggler'
 
 const shifts = [
   Shifts.d8n7,
@@ -26,6 +27,8 @@ const Output: FC = () => {
   return (
     <div className={styles.container}>
       <div className={styles.output}>
+        // объединить проценты и кнопку закрытия в один блок
+        <BonusPercentToggler />
         <div
           className={styles.closeBtn}
           onClick={() => {
