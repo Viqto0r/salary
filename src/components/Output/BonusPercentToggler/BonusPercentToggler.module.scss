@@ -1,0 +1,14 @@
+.container {
+  input {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: 0.2rem;
+  }
+  label {
+    font-size: 2rem;
+    margin-right: 1rem;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
